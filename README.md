@@ -83,6 +83,8 @@ Train and evaluate the XGBoost model:
 ```bash
 jupyter notebook xgboost_model.ipynb
 
+---
+
 ### 📊 Exploratory Data Analysis
 
 #### `eda.ipynb`
