@@ -1,113 +1,109 @@
-# AI for Energy Efficiency – Enfield Hackathon 2025
+# 🔋 AI for Energy Efficiency – Enfield Hackathon 2025
 
-## 🔋 Introduction
+## 👨‍💻 Team IU-UN 2025
+
+
+| Name                            | Description                          |
+|---------------------------------|--------------------------------------|
+| Nguyen Trung Ky                 | Team Leader, Lecturer at IU          |
+| Ly Gia Bao                      | IU student                           |
+| Nguyen Thanh Nam                | IU student                           |
+| Pham Thien Nhan                 | IU-UN student                        |
+| Nguyen The Hao                  | IU student                           |
+| Prof. Shreyank Narayana Gowda   | Lecturer at UN                       |
+| Prof. Christian Wagner          | Lecturer at UN                       |
+
+---
+
+## 🧠 Introduction
 
 ![Enfield Hackathon](https://media.licdn.com/dms/image/v2/D4E22AQGOm6wkbsU31g/feedshare-shrink_800/B4EZWu.w87HcAg-/0/1742397444728?e=2147483647&v=beta&t=JkB6uE1oMxhVwyin8KqbcJewqK5K7eQcnuAizUnS89g)
 
 This project was developed as part of the [Enfield Hackathon 2025: AI for Energy Efficiency](https://cis.ttu.ee/2025/03/01/enfield-hackathon-2025-ai-for-energy-efficiency/), hosted in Tallinn. Our team, **IU-UN 2025**, aimed to tackle the critical issue of energy consumption forecasting in urban environments. Accurate prediction of electricity usage supports greener energy practices by enabling:
 
-- Reduced greenhouse gas emissions
-- Better air quality
-- Economic optimization
-- Sustainable energy planning
+- Reduced greenhouse gas emissions  
+- Better air quality  
+- Economic optimization  
+- Sustainable energy planning  
 
-The core of our solution is a machine learning pipeline utilizing **LSTM**, **Bidirectional LSTM**, **Reinforcement Learning**, and **XGBoost** to predict energy consumption in different buildings using historical hourly usage data.
-
----
-
-## 📊 1. Data Preprocessing
-
-The dataset consists of hourly electricity usage data for 10 building areas from January 2023 to January 2024. Each entry represents usage (in kWh) along with building metadata such as area (m²).
-
-Preprocessing included:
-
-- **Segmentation by building and time** for individualized modeling
-- **Conversion of timestamps** to cyclical temporal features (e.g., hour of day, month)
+The core of our solution is a machine learning pipeline utilizing **LSTM with Reinforcement Learning**, and **XGBoost** to predict energy consumption in different buildings using historical hourly usage data.
 
 ---
 
-## 🧩 2. Handling Missing Values
+## 📈 Energy Usage Forecasting: 10-Month Prediction from 2-Month Input
 
-Missing values were addressed using:
+This project forecasts **the next 10 months of hourly electricity usage** for a new building using **only the first 2 months of 2023** as input. It compares two modeling approaches:
 
-- **Linear interpolation** for small gaps
-- **Forward-filling** for terminal missing entries
-- Validation to ensure temporal consistency and avoid data leakage
-
----
-
-## ⚖️ 3. Normalization
-
-Each feature was scaled using **Min-Max Normalization** to ensure consistency and numerical stability across time series inputs. This was particularly important for training deep learning models sensitive to scale.
+- 🧠 **LSTM + Reinforcement Learning (RL)**  
+- 🌲 **XGBoost Regressor**
 
 ---
 
-## 🛠️ 4. Feature Engineering
+## 🗂️ Project Structure
 
-Engineered features included:
+### 📁 Data Preprocessing
 
-- **Temporal patterns** (hour, day of week, month encoded with sine/cosine transforms)
-- **Lag features** capturing recent consumption trends
-- **Building metadata**, such as area in square meters, integrated into model inputs
+#### `preprocess.ipynb`
+- Loads and cleans the main energy consumption dataset.
 
-These features allowed the models to capture both periodicity and contextual dependencies.
-
----
-
-## 🔁 5. Building LSTM Model
-
-A standard **Long Short-Term Memory (LSTM)** model was implemented to:
-
-- Handle long-range dependencies
-- Capture nonlinear relationships in electricity usage
-- Model temporal dynamics efficiently
-
-The LSTM accepted sequences of past 2 months of hourly data and forecasted the next 10 months.
+#### `preprocess_weather.ipynb`
+- Loads and processes external weather datasets.
 
 ---
 
-## 🔁🔁 6. Building Bidirectional LSTM
+### 📊 Exploratory Data Analysis
 
-To enhance performance, a **Bidirectional LSTM** (BiLSTM) was trained:
-
-- Allows learning from both past and future temporal context
-- Slight improvement in pattern recognition, especially for buildings with cyclical trends
-
-Limitations included higher computational cost and overfitting risks in limited data scenarios.
+#### `eda.ipynb`
+- Visualizes energy usage patterns.  
+- Analyzes differences between buildings, time-of-day trends.
 
 ---
 
-## 🧠⚙️ 7. LSTM Fine-Tuning with Reinforcement Learning
+### 🧠 Model 1 – LSTM + Reinforcement Learning
 
-We incorporated **Reinforcement Learning (RL)** to fine-tune the LSTM model:
+#### `lstm_rl.ipynb`
+- Builds an LSTM model.  
+- Integrates Reinforcement Learning to improve long-term predictions.  
+- Trained on the first 2 months of each building’s data and tested on the next 10 months.
 
-- RL was used to minimize the prediction error (e.g., MAPE) by rewarding better predictions
-- Helped break strong correlations in training states and improve generalization
-- Significant reduction in forecast error observed after 5 episodes of fine-tuning
-
----
-
-## 🌲 8. Building XGBoost Baseline
-
-As a benchmark, we implemented an **XGBoost regressor**:
-
-- Trained on flattened feature sets
-- Faster to train and interpret
-- Performed well in short-term prediction but underperformed on long horizons compared to LSTM
+> ⚠️ **Limitation:**  
+> When applied to a new building with only 2 months of data, normalization was not possible. This led to **poor generalization** and **flat predictions**.
 
 ---
 
-## ✅ 9. Testing and Validation
-All models were evaluated using:
+### 🛠️ Feature Engineering
 
-- **Mean Absolute Percentage Error (MAPE)** as the primary metric
-- 10-fold cross-validation across buildings
-- Comparison across models:
-  - LSTM outperformed others in most buildings
-  - RL fine-tuning improved generalization
-  - XGBoost was fastest but less accurate for multi-month forecasts
+#### `feature_engineering.ipynb`
+- Constructs input features:  
+  - Time encodings (hour, day, weekday, month) as sin/cos functions
 
-### 📉 MAPE Comparison (Before vs After RL Fine-Tuning)
+---
+
+### 🌲 Model 2 – XGBoost
+
+#### `xgboost_model.ipynb`
+- Trains an XGBoost regressor on the first 2 months and tests on the next 10 months of hourly usage.  
+- Uses walk-forward prediction.  
+- **No normalization required**, allowing better generalization to unseen buildings.
+
+#### `submission_xgboost.ipynb`
+- Generates final predictions.  
+- Prepares submission file (CSV) for the new building.
+
+---
+
+## ✅ Why XGBoost
+
+| Model               | Normalization Required | Handles New Building Easily | Forecast Quality |
+|--------------------|------------------------|------------------------------|------------------|
+| LSTM + RL          | ✅ Yes                 | ❌ Poor                      | ❌ Bad           |
+| XGBoost Regressor  | ❌ No                  | ✅ Good                      | ✅ Strong        |
+
+---
+
+## 📉 MAPE Comparison: LSTM+RL vs XGBoost
+
+### 🔁 LSTM + Reinforcement Learning (Before vs After Fine-Tuning)
 
 | Building(s)                 | MAPE Before RL | MAPE After RL |
 |----------------------------|----------------|----------------|
@@ -122,24 +118,56 @@ All models were evaluated using:
 | S01                        | 51.92%         | 48.80%         |
 | D04                        | 23.27%         | 24.56%         |
 
-🔍 **Observation:** In most cases, Reinforcement Learning fine-tuning significantly reduced the prediction error, especially in complex and highly variable buildings like SOC and MEK.
+---
+
+### 🌲 XGBoost MAPE Results
+
+| Building(s)                 | MAPE (XGBoost) |
+|----------------------------|----------------|
+| ICT                        | 9.40%          |
+| U06, U06A, U05B            | 11.02%         |
+| OBS                        | 235.23%        |
+| U05, U04, U04B, GEO        | 11.97%         |
+| TEG                        | ❗ 2.16e+17%    |
+| LIB                        | 23.95%         |
+| MEK                        | ❗ 7.57e+15%    |
+| SOC                        | 33.82%         |
+| S01                        | 277.91%        |
+| D04                        | 61.01%         |
+
+🔍 **Observation:**  
+Reinforcement Learning helped reduce error for some complex buildings, but XGBoost was more consistent overall.
 
 ---
 
-## 🧠 10. Conclusion
+## 🏆 Final Submission Result
 
-Our project demonstrates that deep learning models—especially LSTM fine-tuned with reinforcement learning—can significantly enhance the accuracy of long-term electricity consumption forecasts. The solution is scalable across diverse building types and provides a foundation for data-informed energy efficiency planning.
+Only the **XGBoost** model was submitted for final evaluation.
+
+- ✅ **Final MAPE on test building**: **7.95%**
+- 🥉 **Ranked Top 3 Most Accurate Prediction** at Enfield Hackathon 2025!
+
+### ❌ Why LSTM+RL Was Not Submitted
+
+The LSTM+RL model failed on the final test building due to:
+
+- Inability to normalize with only 2 months of data  
+- Predicting a **flat line** (no variation)  
+
+> 🔎 Final decision: **Only XGBoost predictions were submitted.**
 
 ---
 
-## 👨‍💻 Team IU-UN 2025
+## 🧾 Conclusion
 
-- **Nguyen Trung Ky** (Team Leader)
-- Ly Gia Bao  
-- Nguyen Thanh Nam  
-- **Pham Thien Nhan**  
-- Nguyen The Hao  
-- Prof. Shreyank Narayana Gowda (University of Nottingham)  
-- Prof. Christian Wagner (University of Nottingham)  
+In this project, we tried to forecast 10 months of electricity usage from just 2 months of data.
+
+- **LSTM + RL** worked during training but couldn’t generalize to new buildings due to normalization issues.  
+- **XGBoost** gave a much better result and was easier to apply.  
+
+✅ Final MAPE on test set: **7.95%**  
+🥉 **Top 3 Most Accurate Prediction** among all teams at the Enfield Hackathon 2025!
+
+For future work, we plan to combine the strengths of both models or improve the preprocessing for LSTM.
 
 ---
