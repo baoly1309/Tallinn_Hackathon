@@ -51,6 +51,9 @@ This project forecasts **the next 10 months of hourly electricity usage** for a 
 
 ---
 
+### 🗂️ Project Setup
+
+
 ### 📊 Exploratory Data Analysis
 
 #### `eda.ipynb`
