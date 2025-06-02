@@ -83,6 +83,7 @@ jupyter notebook lstm_rl.ipynb
 ```
 Train and evaluate the XGBoost model:
 ```bash
+# For XGBoost model
 jupyter notebook xgboost_model.ipynb
 ```
 
