@@ -59,7 +59,9 @@ Follow these instructions to set up and run the project locally.
 ```bash
 git clone https://github.com/baoly1309/Tallinn_Hackathon.git
 cd Tallinn_Hackathon
-```bash
+
+---
+
 #### 2. Create a Virtual Environment
 ```bash
 python -m venv venv
