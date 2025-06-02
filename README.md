@@ -53,6 +53,34 @@ This project forecasts **the next 10 months of hourly electricity usage** for a 
 
 ### 🗂️ Project Setup
 
+Follow these instructions to set up and run the project locally.
+
+#### 1. Clone the Repository
+```bash
+git clone https://github.com/baoly1309/Tallinn_Hackathon.git
+cd Tallinn_Hackathon
+
+#### 2. Create a Virtual Environment
+```bash
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+#### 3. Install dependencies
+For LSTM Model:
+```bash
+pip install -r requirements_lstm.txt
+For XGBoost Model:
+```bash
+pip install -r requirements_xgboost.txt
+
+#### 4. Run the Models
+Train and evaluate the LSTM model:
+```bash
+# For LSTM model
+jupyter notebook lstm_rl.ipynb
+Train and evaluate the XGBoost model:
+```bash
+jupyter notebook xgboost_model.ipynb
 
 ### 📊 Exploratory Data Analysis
 
