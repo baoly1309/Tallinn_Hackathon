@@ -64,23 +64,27 @@ cd Tallinn_Hackathon
 ```bash
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
+```
 
 #### 3. Install dependencies
 For LSTM Model:
 ```bash
 pip install -r requirements_lstm.txt
+```
 For XGBoost Model:
 ```bash
 pip install -r requirements_xgboost.txt
-
+```
 #### 4. Run the Models
 Train and evaluate the LSTM model:
 ```bash
 # For LSTM model
 jupyter notebook lstm_rl.ipynb
+```
 Train and evaluate the XGBoost model:
 ```bash
 jupyter notebook xgboost_model.ipynb
+```
 
 ---
 
