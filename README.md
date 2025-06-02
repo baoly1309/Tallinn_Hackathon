@@ -2,6 +2,8 @@
 
 ## 🔋 Introduction
 
+![Enfield Hackathon](https://media.licdn.com/dms/image/v2/D4E22AQGOm6wkbsU31g/feedshare-shrink_800/B4EZWu.w87HcAg-/0/1742397444728?e=2147483647&v=beta&t=JkB6uE1oMxhVwyin8KqbcJewqK5K7eQcnuAizUnS89g)
+
 This project was developed as part of the [Enfield Hackathon 2025: AI for Energy Efficiency](https://cis.ttu.ee/2025/03/01/enfield-hackathon-2025-ai-for-energy-efficiency/), hosted in Tallinn. Our team, **IU-UN 2025**, aimed to tackle the critical issue of energy consumption forecasting in urban environments. Accurate prediction of electricity usage supports greener energy practices by enabling:
 
 - Reduced greenhouse gas emissions
