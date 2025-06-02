@@ -96,7 +96,6 @@ As a benchmark, we implemented an **XGBoost regressor**:
 ---
 
 ## ✅ 9. Testing and Validation
-
 All models were evaluated using:
 
 - **Mean Absolute Percentage Error (MAPE)** as the primary metric
@@ -106,7 +105,22 @@ All models were evaluated using:
   - RL fine-tuning improved generalization
   - XGBoost was fastest but less accurate for multi-month forecasts
 
----
+### 📉 MAPE Comparison (Before vs After RL Fine-Tuning)
+
+| Building(s)                 | MAPE Before RL | MAPE After RL |
+|----------------------------|----------------|----------------|
+| ICT                        | 10.47%         | 10.83%         |
+| U06, U06A, U05B            | 9.49%          | 8.97%          |
+| OBS                        | 43.98%         | 44.79%         |
+| U05, U04, U04B, GEO        | 14.92%         | 13.35%         |
+| TEG                        | 56.78%         | 55.75%         |
+| LIB                        | 25.09%         | 24.32%         |
+| MEK                        | 27.37%         | 21.90%         |
+| SOC                        | 32.29%         | 16.27%         |
+| S01                        | 51.92%         | 48.80%         |
+| D04                        | 23.27%         | 24.56%         |
+
+🔍 **Observation:** In most cases, Reinforcement Learning fine-tuning significantly reduced the prediction error, especially in complex and highly variable buildings like SOC and MEK.
 
 ## 🧠 10. Conclusion
 
