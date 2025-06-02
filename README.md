@@ -61,11 +61,16 @@ cd Tallinn_Hackathon
 ```
 
 #### 2. Create a Virtual Environment
+Using venv:
 ```bash
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 ```
-
+Or using conda
+```bash
+conda create -n tallinn_hackathon python=3.10
+conda activate tallinn_hackathon
+```
 #### 3. Install dependencies
 For LSTM Model:
 ```bash
