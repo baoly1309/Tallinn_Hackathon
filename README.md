@@ -1,6 +1,6 @@
 # 🔋 AI for Energy Efficiency – Enfield Hackathon 2025
 
-## 👨‍💻 Team IU-UN 2025
+## 👨‍💻 Team IU-UN 2025 (Internationl University - University of Nottingham)
 
 
 | Name                            | Description                          |
