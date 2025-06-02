@@ -122,6 +122,8 @@ All models were evaluated using:
 
 🔍 **Observation:** In most cases, Reinforcement Learning fine-tuning significantly reduced the prediction error, especially in complex and highly variable buildings like SOC and MEK.
 
+---
+
 ## 🧠 10. Conclusion
 
 Our project demonstrates that deep learning models—especially LSTM fine-tuned with reinforcement learning—can significantly enhance the accuracy of long-term electricity consumption forecasts. The solution is scalable across diverse building types and provides a foundation for data-informed energy efficiency planning.
