@@ -118,8 +118,6 @@ This project forecasts **the next 10 months of hourly electricity usage** for a 
 | S01                        | 51.92%         | 48.80%         |
 | D04                        | 23.27%         | 24.56%         |
 
-![alt text](https://i.ibb.co/vCtff1CM/1.png)
-
 ---
 
 ### 🌲 XGBoost MAPE Results
@@ -137,9 +135,10 @@ This project forecasts **the next 10 months of hourly electricity usage** for a 
 | S01                        | 277.91%        |
 | D04                        | 61.01%         |
 
-🔍 **Observation:**  
+🔍 **Observation:**
 Reinforcement Learning helped reduce error for some complex buildings, but XGBoost was more consistent overall.
 
+![alt text](https://i.ibb.co/pBBKdjZk/sample-predict.png)
 ---
 
 ## 🏆 Final Submission Result
