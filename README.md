@@ -165,9 +165,6 @@ In this project, we tried to forecast 10 months of electricity usage from just 2
 - **LSTM + RL** worked during training but couldn’t generalize to new buildings due to normalization issues.  
 - **XGBoost** gave a much better result and was easier to apply.  
 
-✅ Final MAPE on test set: **7.95%**  
-🥉 **Top 3 Most Accurate Prediction** among all teams at the Enfield Hackathon 2025!
-
 For future work, we plan to combine the strengths of both models or improve the preprocessing for LSTM.
 
 ---
