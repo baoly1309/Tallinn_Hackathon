@@ -49,13 +49,10 @@ This project forecasts **the next 10 months of hourly electricity usage** for a 
 #### `preprocess_weather.ipynb`
 - Loads and processes external weather datasets.
 
----
-
 ### 🗂️ Project Setup
 
 Follow these instructions to set up and run the project locally.
 
----
 #### 1. Clone the Repository
 ```bash
 git clone https://github.com/baoly1309/Tallinn_Hackathon.git
